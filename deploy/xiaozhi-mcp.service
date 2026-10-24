@@ -1,0 +1,17 @@
+[Unit]
+Description=Xiaozhi MCP Asisten
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=xiaozhi
+WorkingDirectory=/opt/xiaozhi-mcp
+EnvironmentFile=/opt/xiaozhi-mcp/.env
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/opt/xiaozhi-mcp/.venv/bin/python mcp_pipe.py asisten_tools.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
